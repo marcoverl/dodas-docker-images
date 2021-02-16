@@ -31,9 +31,8 @@ ARG spark_uid=185
 
 RUN set -ex && \
 #    sed -i 's/http:/https:/g' /etc/apt/sources.list && \
-    apt-get update && \
     ln -s /lib /lib64 && \
-    apt install -y openjdk-8-jdk bash tini libc6 libpam-modules krb5-user libnss3 python3 python3-pip && \
+    apt-get update && DEBIAN_FRONTEND="noninteractive" TZ="Europe/Rome" apt install -y openjdk-8-jdk bash tini libc6 libpam-modules krb5-user libnss3 wget python3 python3-pip && \
     rm /bin/sh && \
     ln -sv /bin/bash /bin/sh && \
     echo "auth required pam_wheel.so use_uid" >> /etc/pam.d/su && \
