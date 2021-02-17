@@ -53,6 +53,8 @@ ADD https://repo1.maven.org/maven2/com/amazonaws/aws-java-sdk-bundle/1.11.878/aw
 ADD https://repo1.maven.org/maven2/org/apache/hadoop/hadoop-aws/3.2.0/hadoop-aws-3.2.0.jar /usr/local/spark/jars/
 
 ENV SPARK_HOME /usr/local/spark
+ENV PYTHONPATH $SPARK_HOME/python:$SPARK_HOME/python/lib/py4j-0.10.7-src.zip:$PYTHONPATH
+ENV SPARK_OPTS --driver-java-options=-Xms1024M --driver-java-options=-Xmx1024M --driver-java-options=-Dlog4j.logLevel=debug
 
 WORKDIR /usr/local/spark/work-dir
 RUN chmod g+w /usr/local/spark/work-dir && chmod go+r /usr/local/spark/jars/*
