@@ -15,7 +15,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-
+unshare -c -m --keep-caps
 # echo commands to the terminal output
 set -ex
 
